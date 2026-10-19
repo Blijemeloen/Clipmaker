@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ClipMaker – Login</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main>
+  <h1>ClipMaker</h1>
+  <p id="msg">Returning to ClipMaker…</p>
+  <p id="fallback" hidden><a id="link" href="#">Click here if nothing happens.</a></p>
+</main>
+<script>
+  // TikTok sends the login result here; pass it on unchanged to the ClipMaker app running on this computer.
+  var target = "http://127.0.0.1:3455/callback/" + window.location.search;
+  if (window.location.search) {
+    document.getElementById("link").href = target;
+    document.getElementById("fallback").hidden = false;
+    window.location.replace(target);
+  } else {
+    document.getElementById("msg").textContent = "This page is used by ClipMaker to finish logging in with TikTok.";
+  }
+</script>
+</body>
+</html>
